@@ -4,7 +4,8 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    numbers: []
+    numbers: [],
+    display: 'none'
   };
 
   numbersGenerator = () => {
@@ -23,17 +24,18 @@ class App extends React.Component {
     numbersArray.sort((a, b) => a - b);
 
     this.setState({
-      numbers: numbersArray
+      numbers: numbersArray,
+      display: 'flex'
     });
   }
 
   render() {
     return (
         <div className="App">
-          <button onClick={this.numbersGenerator}>
+          <button className="newNumbers" onClick={this.numbersGenerator}>
             New numbers
           </button>
-          <NumbersDrawer numbers={this.state.numbers}/>
+          <NumbersDrawer numbers={this.state.numbers} display={this.state.display}/>
         </div>
     );
   }
